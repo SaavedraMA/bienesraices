@@ -64,19 +64,8 @@
 
 			// Guarda la imagen en el server
 			$image->save(CARPETA_IMAGENES .$nombreImagen); 
-
-		
-			//Guarda en la base de datos 
-
-			$resultado = $propiedad->guardar();
-
-			//Mensaje de Exito o Error 
-			if ($resultado){
-				//redirecion al usuario
-				header('Location:index.php?resultado=1');
 			
-			}
-
+			$propiedad->guardar();
 		}	
 
 	} 

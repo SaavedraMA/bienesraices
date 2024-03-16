@@ -19,22 +19,14 @@
 		$id = $_POST['id'];
 		$id = filter_var($id, FILTER_VALIDATE_INT); 
 
-		if ($id){
-			//Eliminar la imagen
-			 $query = "SELECT imagen FROM propiedades WHERE id = ${id}";
-			 $resultado = mysqli_query($db,$query);
-			 $propiedad = mysqli_fetch_assoc($resultado);
+		if ($id){ 
 
-			 unlink('../../imagenes/'.$propiedad['imagen'].'.jpg');
+			$propiedad = Propiedad::find($id);
 
-			 //Eliminar propiedad 
-			$query = "DELETE FROM propiedades WHERE id = ${id}";
+			$propiedad->eliminar();
 
-			$resultado = mysqli_query ($db, $query);
-
-			if ($resultado){
-				header('Location: index.php)?resultado=3');
-			}
+		
+			
 		}
 
 	}
